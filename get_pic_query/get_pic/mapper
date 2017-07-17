@@ -1,0 +1,10 @@
+import sys
+def mapper():
+    for line in sys.stdin:
+        line = line.strip()
+        if line == '':
+            continue
+        line = line.replace('\001', '\t')
+ 
+if __name__ == '__main__':
+    mapper()

@@ -3,8 +3,6 @@ import sys
 import csv
 
 TOP_NUM = 1000
-wise_mt = ['3180','3199']
-pc_mt = ['3231','3232']
 
 wise_show = {}
 wise_charge = {}
@@ -29,7 +27,7 @@ for line in mt_file.xreadlines():
     charge = arr[4]
     mtlist = arr[0].split('\002')
     for mt in mtlist:
-        if mt in wise_mt:
+        if mt in ['1', '2']:
             wise_show.setdefault(query,[0,0,0])
 #            wise_charge.setdefault(query,0)
             wise_show[query][0] += int(show)
@@ -37,7 +35,7 @@ for line in mt_file.xreadlines():
             wise_show[query][2] += int(charge)
 #            wise_charge[query] += int(charge)
             break
-        elif mt in pc_mt:
+        elif mt in ['3', '4']:
             pc_show.setdefault(query,[0,0,0])
 #            pc_charge.setdefault(query,0)
             pc_show[query][0] += int(show)

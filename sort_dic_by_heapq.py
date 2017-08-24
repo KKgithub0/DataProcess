@@ -20,6 +20,7 @@ def sort_dic_by_heapq():
     # put all element into heapq or use count to limit its size
     for k, v in dic.iteritems():
         heapq.heappush(heap, (int(v), k))
+    #heap.sort()
     list = heapq.nlargest(10, heap)
     for item in list:
         print str(item[1]) + '\t' + str(item[0])
@@ -36,6 +37,7 @@ def sort_dic_by_priority_queue():
 #using K to limit the size of heap   
 #to get topK of smallest by restore the value by -value
 #get topK of largest
+#heap[0] is smallest value
 def sort_dic_by_heapq_topK():
     heap = []
     dic = get_dic('./word_pv.txt')

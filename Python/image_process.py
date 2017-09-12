@@ -18,6 +18,8 @@ if __name__ == '__main__':
         if os.path.isfile(path):
             try:
                 im = Image.open(path)
+                #处理gif图，将其转换为rgb图片
+                im = im.convert('RGB')
                 (x, y) = im.size
                 #像素低于 150 * 150，统计结果并跳过
                 if x < 150 and y < 150:

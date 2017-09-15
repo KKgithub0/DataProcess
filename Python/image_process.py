@@ -2,7 +2,7 @@ from PIL import Image
 import os
 #最近碰到了一些图片相关的东西，将已有的图片填充为给定size的图片
 #只能说Python果然强大，上代码
-
+#http://effbot.org/imagingbook/image.html
 if __name__ == '__main__':
     pic_dic = dict()
     rootdir = '/Users/xuyikai/Downloads/all_logo/logo/'

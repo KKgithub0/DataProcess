@@ -18,8 +18,9 @@ if __name__ == '__main__':
         if os.path.isfile(path):
             try:
                 im = Image.open(path)
-                #处理gif图，将其转换为rgb图片，非gif图不要加此句
-                im = im.convert('RGB')
+                #处理gif,jpeg图，将其转换为rgb图片，png图不要加此句，png图本身是rgba图片
+                if not 'png' in list[i]:
+                    im = im.convert('RGB')
                 (x, y) = im.size
                 #像素低于 150 * 150，统计结果并跳过
                 if x < 150 and y < 150:
@@ -34,11 +35,13 @@ if __name__ == '__main__':
                 #(r, g, b) = img_array[0,0]
                 #创建一张新图片，参数分别是：格式，大小，color
                 #这里我取的是待扩充图的左上角第一个像素的rgb
-                im_new = Image.new('RGBA', (300, 300), img_array[0,0])
+                (x, y) = im.size
+                z = max(x, y)
+                im_new = Image.new('RGBA', (z, z), img_array[0,0])
                 #print im_new.format
                 #计算旧图片在新图片中放置的位置，其实就是新图片的中间
-                pos_x = (300 - x) / 2 
-                pos_y = (300 - y) / 2 
+                pos_x = (z - x) / 2 
+                pos_y = (z - y) / 2 
                 #旧图粘贴进新图片
                 im_new.paste(im, (pos_x, pos_y))
                 #resize函数直接拉伸图片，达不到填充的效果，压缩图片的时候可以尝试

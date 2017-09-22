@@ -1,5 +1,6 @@
 from PIL import Image
 import os
+import sys
 #最近碰到了一些图片相关的东西，将已有的图片填充为给定size的图片
 #只能说Python果然强大，上代码
 #http://effbot.org/imagingbook/image.html
@@ -50,8 +51,9 @@ if __name__ == '__main__':
                 #统计图片尺寸分布的
                 pic_dic.setdefault(str(x) + ',' + str(y), 0)
                 pic_dic[str(x) + ',' + str(y)] += 1   
-            except Exception, e:
-                print e
+            except:
+                s = sys.exc_info()
+                print "Error '%s' happened on line %d" % (s[1],s[2].tb_lineno)
             count += 1
     print str(unable) + '\t' + str(sum) 
     #with open('/Users/xuyikai/Downloads/work/pic_size.txt', 'w') as f:
